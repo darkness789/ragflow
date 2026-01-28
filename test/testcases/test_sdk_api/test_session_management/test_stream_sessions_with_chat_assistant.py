@@ -27,7 +27,7 @@ class TestSessionMethods:
         chat_assistant, sessions = add_sessions_with_chat_assistant_func
         session = sessions[0]
         
-        # 调用 ask 方法
+        
         messages = list(session.ask(question="What is RAGFlow?", stream=False))
         
         assert len(messages) > 0
@@ -59,7 +59,7 @@ class TestSessionMethods:
         # Directly call the update method of the session object, which triggers update in session.py
         session.update({"name": new_name})
         
-        # 验证更新结果
+        
         updated_sessions = chat_assistant.list_sessions(id=session.id)
         assert updated_sessions[0].name == new_name
 
@@ -73,8 +73,7 @@ class TestSessionMethods:
         messages = list(session.ask(question="Hi", stream=False))
         message = messages[0]
         
-        # 验证 Message 属性
+        
         assert message.role == "assistant"
         assert isinstance(message.content, str)
-        # 即使没有参考资料，reference 属性也应该存在（默认为 None 或 list）
         assert hasattr(message, "reference")
