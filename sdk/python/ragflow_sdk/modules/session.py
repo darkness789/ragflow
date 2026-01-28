@@ -61,10 +61,9 @@ class Session(Base):
                     json_data = json.loads(content)
                 except json.JSONDecodeError:
                     continue  # Skip lines that are not valid JSON
-                if json_data.get("event") != "message":
-                    continue
-
+                
                 event = json_data.get("event",None)
+
                 if event and event != "message":
                     continue
 
