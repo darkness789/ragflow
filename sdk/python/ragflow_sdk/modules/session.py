@@ -87,7 +87,7 @@ class Session(Base):
     def _structure_answer(self, json_data):
         answer = ""
         if self.__session_type == "agent":
-           answer = json_data["data"]["content"]
+            answer = json_data["data"]["content"]
         elif self.__session_type == "chat":
             answer = json_data["answer"]
         reference = json_data.get("reference", {})
